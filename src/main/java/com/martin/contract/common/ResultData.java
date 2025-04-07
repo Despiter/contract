@@ -22,6 +22,10 @@ public class ResultData<T> {
     @Builder.Default
     private long timestamp = System.currentTimeMillis();
 
+    public static <T> ResultData<T> success() {
+        return ResultData.<T>builder().code(RC200.getCode()).msg(RC200.getMsg()).build();
+    }
+
     public static <T> ResultData<T> of(T data) {
         return ResultData.<T>builder().code(RC200.getCode()).msg(RC200.getMsg()).data(data).build();
     }

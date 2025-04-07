@@ -13,4 +13,5 @@ public class OrganizationController extends BaseController<OrganizationPo, Organ
     public OrganizationController(OrganizationRepo organizationRepo) {
         super(organizationRepo);
     }
+
 }
