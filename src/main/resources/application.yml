@@ -1,0 +1,35 @@
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
+server:
+  port: 9000
+
+spring:
+  application:
+    name: ffmpeg
+  datasource:
+    dynamic:
+      strict: true
+      primary: db_contract
+      datasource:
+        db_contract:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.100.5:3306/db_contract
+          username: martin
+          password: 190218
+          type: com.alibaba.druid.pool.DruidDataSource # 指定 Druid 作为数据源类型
+          druid:
+            initial-size: 5
+            min-idle: 5
+            max-active: 20
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            validation-query: SELECT 1
+  data:
+    redis:
+      host: 192.168.100.5
+      port: 6379
