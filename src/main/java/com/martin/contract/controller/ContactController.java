@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/contact")
 public class ContactController extends BaseController<ContactPo, ContactMapper, ContactRepo> {
+    public ContactController(ContactRepo repo) {
+        super(repo);
+    }
 }

@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/contract")
 public class ContractController extends BaseController<ContractPo, ContractMapper, ContractRepo> {
+    public ContractController(ContractRepo contractRepo) {
+        super(contractRepo);
+    }
 }

@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class SysUserController extends BaseController<SysUserPo, SysUserMapper, SysUserRepo> {
+    public SysUserController(SysUserRepo sysUserRepo) {
+        super(sysUserRepo);
+    }
 }

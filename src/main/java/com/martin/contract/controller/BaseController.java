@@ -8,14 +8,16 @@ import com.martin.contract.persist.base.BaseRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Slf4j
 public abstract class BaseController<T extends BasePo, M extends BaseMapper<T>, R extends BaseRepo<M, T>> {
 
-    @Resource
-    protected R r;
+    private final R r;
+
+    public BaseController(R r) {
+        this.r = r;
+    }
 
     @PostMapping("/insert")
     public ResultData<Boolean> insert(@RequestBody T t) {
@@ -30,6 +32,11 @@ public abstract class BaseController<T extends BasePo, M extends BaseMapper<T>, 
     @PutMapping("/update")
     public ResultData<Boolean> update(@RequestBody T t) {
         return ResultData.of(r.updateById(t));
+    }
+
+    @GetMapping("/get/{id}")
+    public ResultData<T> get(@PathVariable("id") long id) {
+        return ResultData.of(r.getById(id));
     }
 
     @GetMapping("/page")

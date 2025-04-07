@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/organization")
 public class OrganizationController extends BaseController<OrganizationPo, OrganizationMapper, OrganizationRepo> {
+    public OrganizationController(OrganizationRepo organizationRepo) {
+        super(organizationRepo);
+    }
 }
