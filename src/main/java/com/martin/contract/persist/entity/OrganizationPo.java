@@ -10,27 +10,29 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("sys_user")
-public class SysUserPo extends BasePo {
+@TableName("organization")
+public class OrganizationPo extends BasePo {
 
-    private String userName;
+    private String fullName;
 
-    private String password;
-
-    private String realName;
+    private String address;
 
     private Role role;
 
-    private Long parentId;
+    private String province;
+
+    private String city;
+
+    private String area;
+
+    private Long createdBy;
 
     @Getter
     @AllArgsConstructor
     public enum Role {
-        SALES("销售"),
-        MANAGER("高管"),
-        ADMIN("管理员");
+        HOSPITAL("医院"),
+        PARTNER("合作方");
 
         private final String desc;
     }
-
 }
