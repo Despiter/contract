@@ -1,6 +1,7 @@
 package com.martin.contract.persist.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.martin.contract.enums.UserRole;
 import com.martin.contract.persist.base.BasePo;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,18 +20,8 @@ public class SysUserPo extends BasePo {
 
     private String realName;
 
-    private Role role;
+    private UserRole userRole;
 
     private Long parentId;
-
-    @Getter
-    @AllArgsConstructor
-    public enum Role {
-        SALES("销售"),
-        MANAGER("高管"),
-        ADMIN("管理员");
-
-        private final String desc;
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.martin.contract.common;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +13,13 @@ public class TokenUtil {
 
     @Resource
     private RedisTemplate<String, String> redisTemplate;
+    @Value("${auth.time}")
+    private Long authTime;
 
     // 生成Token并存入Redis（有效期10分钟）
     public String generateToken(String userName) {
-        String token = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set("USER_TOKEN:" + userName, token, 10, TimeUnit.MINUTES);
+        String token = UUID.randomUUID().toString().replace("-", "");
+        redisTemplate.opsForValue().set("USER_TOKEN:" + userName, token, authTime, TimeUnit.MINUTES);
         return token;
     }
 

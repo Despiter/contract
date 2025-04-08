@@ -1,7 +1,7 @@
 package com.martin.contract.persist.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.martin.contract.persist.base.BasePo;
+import com.martin.contract.persist.base.BaseUserPo;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -10,8 +10,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("contact")
-public class ContactPo extends BasePo {
+@TableName("tb_contact")
+public class TbContactPo extends BaseUserPo {
 
     private String name;
 

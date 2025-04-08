@@ -1,11 +1,11 @@
-package com.martin.contract.common;
+package com.martin.contract.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum ReturnCodeEnum {
+public enum ReturnCode {
 
     /**
      * 操作失败
@@ -41,6 +41,7 @@ public enum ReturnCodeEnum {
      * 未登录
      */
     RC300("300", "账号或密码错误"),
+    RC301("301", "用户已存在"),
 
     /**
      * access_denied

@@ -1,16 +1,23 @@
 package com.martin.contract.controller;
 
-import com.martin.contract.persist.entity.ContractPo;
-import com.martin.contract.persist.mapper.ContractMapper;
-import com.martin.contract.persist.repo.ContractRepo;
+import com.martin.contract.persist.entity.TbContractPo;
+import com.martin.contract.persist.mapper.TbContractMapper;
+import com.martin.contract.persist.repo.TbContractRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @Slf4j
 @RestController
 @RequestMapping("/contract")
-public class ContractController extends BaseController<ContractPo, ContractMapper, ContractRepo> {
-    public ContractController(ContractRepo contractRepo) {
-        super(contractRepo);
+public class ContractController extends BaseController<TbContractPo, TbContractMapper, TbContractRepo> {
+
+    @Resource
+    private TbContractRepo tbContractRepo;
+
+    @Override
+    protected TbContractRepo getRepo() {
+        return tbContractRepo;
     }
 }

@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Request<T> {
+public class PageRequest<T> {
 
     private T data;
+
+//    private Long userId;
 
     private Integer pageNo;
 

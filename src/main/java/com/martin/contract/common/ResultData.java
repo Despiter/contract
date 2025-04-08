@@ -1,11 +1,15 @@
 package com.martin.contract.common;
 
+import com.martin.contract.enums.ReturnCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static com.martin.contract.common.ReturnCodeEnum.RC200;
+import java.util.Collections;
+import java.util.List;
+
+import static com.martin.contract.enums.ReturnCode.RC200;
 
 @Data
 @Builder
@@ -30,10 +34,14 @@ public class ResultData<T> {
         return ResultData.<T>builder().code(RC200.getCode()).msg(RC200.getMsg()).data(data).build();
     }
 
-    public static <T> ResultData<T> fail(ReturnCodeEnum returnCodeEnum) {
+    public static <T> ResultData<List<T>> emptyCollection() {
+        return ResultData.<List<T>>builder().code(RC200.getCode()).msg(RC200.getMsg()).data(Collections.emptyList()).build();
+    }
+
+    public static <T> ResultData<T> fail(ReturnCode returnCode) {
         ResultData<T> resultData = new ResultData<>();
-        resultData.setCode(returnCodeEnum.getCode());
-        resultData.setMsg(returnCodeEnum.getMsg());
+        resultData.setCode(returnCode.getCode());
+        resultData.setMsg(returnCode.getMsg());
         return resultData;
     }
 

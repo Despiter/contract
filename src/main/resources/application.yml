@@ -5,6 +5,10 @@ mybatis-plus:
 server:
   port: 9000
 
+#登录失效时间(分钟)
+auth:
+  time: 1440
+
 spring:
   application:
     name: ffmpeg

@@ -1,6 +1,7 @@
 package com.martin.contract.common;
 
 import com.alibaba.fastjson2.JSON;
+import com.martin.contract.enums.ReturnCode;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +20,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 放行登录接口
-        if (request.getRequestURI().contains("/auth/login")) {
+        if (request.getRequestURI().contains("/auth/login") || request.getRequestURI().contains("/auth/signup")) {
             return true;
         }
 
@@ -31,7 +32,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (userName == null || token == null || !tokenUtil.validateToken(userName, token)) {
             response.setContentType("application/json;charset=UTF-8"); // 关键：设置编码
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write(JSON.toJSONString(ResultData.fail(ReturnCodeEnum.RC401)));
+            response.getWriter().write(JSON.toJSONString(ResultData.fail(ReturnCode.RC401)));
             return false;
         }
         return true;
