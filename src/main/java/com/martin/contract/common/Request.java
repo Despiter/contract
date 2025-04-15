@@ -1,20 +1,20 @@
 package com.martin.contract.common;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageRequest<T> extends Request<T> {
+public class Request<T> {
 
     @NotNull
-    private Integer pageNo;
+    private T data;
 
-    @NotNull
-    private Integer pageSize;
+    private Long userId;
 
 }

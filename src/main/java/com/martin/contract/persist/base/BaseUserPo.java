@@ -13,6 +13,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public abstract class BaseUserPo extends BasePo {
 
-    private Long userId;
+    /**
+     * 创建用户ID
+     */
+    private Long createdUserId;
 
 }

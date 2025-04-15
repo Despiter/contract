@@ -1,6 +1,7 @@
 package com.martin.contract.persist.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.martin.contract.enums.ObjRole;
 import com.martin.contract.persist.base.BaseUserPo;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -20,4 +21,10 @@ public class TbContactPo extends BaseUserPo {
     private String email;
 
     private Long refId;
+
+    /**
+     * 所属对象角色
+     */
+    private ObjRole objRole;
+
 }

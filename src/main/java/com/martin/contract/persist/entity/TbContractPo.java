@@ -19,12 +19,16 @@ public class TbContractPo extends BaseUserPo {
 
     private String contractNo;
 
+    /**
+     * 对象ID
+     */
     private Long objId;
 
     private BusinessMode businessMode;
 
-    private ContractStatus status;
-
     private BigDecimal amount;
+
+    @Builder.Default
+    private ContractStatus contractStatus = ContractStatus.DRAFT;
 
 }

@@ -17,8 +17,18 @@ public class SysUserRepo extends BaseRepo<SysUserMapper, SysUserPo> {
         return getOne(Wrappers.<SysUserPo>lambdaQuery().eq(SysUserPo::getUserName, userName).eq(SysUserPo::getPassword, password));
     }
 
-    public List<SysUserPo> listByParentId(Long id) {
+    /**
+     * 查询下属用户
+     */
+    public List<SysUserPo> listUnders(Long id) {
         return list(Wrappers.<SysUserPo>lambdaQuery().in(SysUserPo::getParentId, id));
+    }
+
+    /**
+     * 查询非本人的全部用户
+     */
+    public List<SysUserPo> listNotMe(Long id) {
+        return list(Wrappers.<SysUserPo>lambdaQuery().ne(SysUserPo::getId, id));
     }
 
 }

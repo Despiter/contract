@@ -1,6 +1,7 @@
 package com.martin.contract.persist.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.martin.contract.enums.ObjAuditStatus;
 import com.martin.contract.persist.base.BaseUserPo;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -22,5 +23,8 @@ public class TbPartnerPo extends BaseUserPo {
     private String city;
 
     private String area;
+
+    @Builder.Default
+    private ObjAuditStatus objAuditStatus = ObjAuditStatus.NEW;
 
 }

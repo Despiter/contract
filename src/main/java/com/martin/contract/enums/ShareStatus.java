@@ -5,9 +5,11 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum CustomerRole {
-    HOSPITAL("医院"),
-    PARTNER("合作方");
+public enum ShareStatus {
+    NEW("新建"),
+    FAILED("审核失败"),
+    SUCCESS("审核通过"),
+    ;
 
     private final String desc;
 }

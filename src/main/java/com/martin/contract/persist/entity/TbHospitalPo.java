@@ -1,11 +1,9 @@
 package com.martin.contract.persist.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.martin.contract.enums.ObjAuditStatus;
 import com.martin.contract.persist.base.BaseUserPo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper = true)
@@ -26,6 +24,7 @@ public class TbHospitalPo extends BaseUserPo {
 
     private String area;
 
-    private Long createdUserId;
+    @Builder.Default
+    private ObjAuditStatus objAuditStatus = ObjAuditStatus.NEW;
 
 }
